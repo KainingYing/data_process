@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+__env/
+env_bak/
+*.egg-info/
+dist/
+build/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg/
+*.egg-info/
+.installed.cfg
+*.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Temporary files
+*.swp
+*~
+*.bak
+*.backup
+*.tmp
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage/
+/pkg/
+/spec/reports/
+/test/tmp/
+**.orig
+rerun.txt
+spec.txt
+*.log
+*.tmp
+*.log.*
+.mspec
+.rspec
+.smt
+.smf
+.smj
+.rubocop-https
+.rubysl-*
+
+# Visual Studio Code
+.vscode/
