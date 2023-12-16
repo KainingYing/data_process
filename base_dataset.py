@@ -36,6 +36,8 @@ class BaseDataset:
     
     def sample(self):
         import random
+        if self.sampling_num > len(self.images_info):
+            self.sampling_num = len(self.images_info)
         return random.sample(self.images_info, self.sampling_num)
     
     @property
@@ -47,3 +49,7 @@ class BaseDataset:
             # 获取图像的宽度和高度
             width, height = img.size
         return width, height
+    
+    def save_image(self, image, image_path):
+        img = Image.fromarray(image.astype('uint8'), 'L')
+        img.save(image_path)

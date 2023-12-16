@@ -1,13 +1,21 @@
 import os
 import json
 import argparse
+import warnings
+warnings.filterwarnings("ignore")
 
 import mmcv
+
+from visual_recognition.color_recognition import *
+from visual_recognition.national_flag_recognition import *
+from visual_recognition.fashion_recognition import *
+from visual_recognition.abstract_visual_recognition import *
 
 from visual_prompt_understanding.visual_mark_understanding import *
 
 from image2image_translate.jigsaw_puzzle_solving import *
 
+from relation_reasoning.social_relation_recognition import *
 from relation_reasoning.human_object_interaction_recognition import *
 from relation_reasoning.human_interaction_understanding import *
 
@@ -49,7 +57,6 @@ def main(args):
     dataset_config_file = args.dataset_config
 
     dataset_config_file = mmcv.Config.fromfile(dataset_config_file)
-    
     dataset_config = dataset_config_file.dataset[task_name]
 
     task_data = MergeDataset(dataset_config, task_name)
@@ -59,7 +66,7 @@ def main(args):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Example script to parse arguments.")
-    parser.add_argument('--task_name', type=str, default="human_interaction_understanding", help='The name of the target dataet')
+    parser.add_argument('--task_name', type=str, default="abstract_visual_recognition", help='The name of the target dataet')
     parser.add_argument('--dataset_config', type=str, default="/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/data_process/dataset_config.py", help='The path of dataset config.')
 
     args = parser.parse_args()
