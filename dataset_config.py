@@ -26,7 +26,22 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/abstract_visual_recognition"
     },
-
+    # ==============================================================================================================================
+    # ocr
+    "handwritten_text_recognition": {
+        "dataset_list": [
+            "iam_line",
+            "iam_page"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/ocr/handwritten_text_recognition"
+    },
+    "handwritten_mathematical_expression_recognition": {
+        "dataset_list": [
+            "hme100k",
+            "crohme2014"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/ocr/handwritten_mathematical_expression_recognition"
+    },
     # ==============================================================================================================================
     # visual_prompt_understanding
     "visual_prompt_understanding": {
@@ -71,5 +86,59 @@ dataset = {
             "bit"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/relation_reasoning/human_interaction_understanding",
+    },
+    # ==============================================================================================================================
+    # visual_illusion
+    "color_assimilation": {
+        "dataset_list": [
+            "gvil_assimilation"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/color_assimilation",
+    },
+    "color_constancy": {
+        "dataset_list": [
+            "gvil_constancy"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/color_constancy",
+    },
+    "color_contrast": {
+        "dataset_list": [
+            "gvil_contrast"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/color_contrast",
+    },
+    "geometrical_perspective": {
+        "dataset_list": [
+            "gvil_perspective"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/geometrical_perspective",
+    },
+    "geometrical_relativity": {
+        "dataset_list": [
+            "gvil_relativity"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/geometrical_relativity",
+    },
+    # ==============================================================================================================================
+    # visual_coding
+    "eqn2latex": {
+        "dataset_list": [
+            "im2latex90k"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/eqn2latex",
+    },
+    "screenshot2code": {
+        "dataset_list": [
+            "pix2code_andriod",
+            "pix2code_ios",
+            "pix2code_web"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/screenshot2code",
+    },
+    "sketch2code": {
+        "dataset_list": [
+            "sketch2code_kaggle"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/sketch2code",
     }
 }

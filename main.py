@@ -11,6 +11,9 @@ from visual_recognition.national_flag_recognition import *
 from visual_recognition.fashion_recognition import *
 from visual_recognition.abstract_visual_recognition import *
 
+from ocr.handwritten_text_recognition import *
+from ocr.handwritten_mathematical_expression_recognition import *
+
 from visual_prompt_understanding.visual_mark_understanding import *
 
 from image2image_translate.jigsaw_puzzle_solving import *
@@ -18,6 +21,16 @@ from image2image_translate.jigsaw_puzzle_solving import *
 from relation_reasoning.social_relation_recognition import *
 from relation_reasoning.human_object_interaction_recognition import *
 from relation_reasoning.human_interaction_understanding import *
+
+from visual_illusion.color_assimilation import *
+from visual_illusion.color_constancy import *
+from visual_illusion.color_contrast import *
+from visual_illusion.geometrical_perspective import *
+from visual_illusion.geometrical_relativity import *
+
+from visual_coding.eqn2latex import *
+from visual_coding.screenshot2code import *
+from visual_coding.sketch2code import *
 
 
 class MergeDataset:
@@ -66,7 +79,7 @@ def main(args):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Example script to parse arguments.")
-    parser.add_argument('--task_name', type=str, default="abstract_visual_recognition", help='The name of the target dataet')
+    parser.add_argument('--task_name', type=str, default="sketch2code", help='The name of the target dataet')
     parser.add_argument('--dataset_config', type=str, default="/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/data_process/dataset_config.py", help='The path of dataset config.')
 
     args = parser.parse_args()
