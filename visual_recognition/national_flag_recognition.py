@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import json
 
 import mmcv
 from PIL import Image
@@ -22,6 +23,7 @@ class country_flag(BaseDataset):
     def parse_images_info(self):
         self.images_info = list()
         country_code_list = []
+        self.category_space = []
         for country in Path(self.image_path).iterdir():
             country_code = country.stem
             country_code_list.append(country_code)
@@ -37,3 +39,38 @@ class country_flag(BaseDataset):
                     "category": country_name
                 }
             )
+            self.category_space.append(country_name)
+
+            self.images_info.append(image_info)
+        
+        self.dataset_info["category_space"] = self.category_space
+    
+    @staticmethod
+    def generate_prompt(image_info, dataset_info):
+        question = "Which country does the flag in the picture belong to?"
+
+        sys_prompt = "I need you to help me create options for a classification problem, where the answer is a category. Additionally, I will provide you with a category space for creating other options. Formally, I will provide you with a category space, a ground truth class, a question (you can use this question directly when you return), and you will assist me in completing a dictionary and returning it as JSON."
+
+        input_json = {
+            "question": question,
+            "category_space": dataset_info["category_space"],
+            "example_dict": {
+                "num_choices": 4,
+                "gt_category": "America",
+                "question": "Which country does the flag in the picture belong to?",
+                "choice_a": "China",
+                "choice_b": "America",
+                "choice_c": "Australia",
+                "choice_d": "England",
+                "gt_choice": "b"
+            },
+            "query_dict": {
+                "num_choices": 4,
+                "gt_category": image_info["category"],
+                "question": "Which country does the flag in the picture belong to?",
+            }
+        }
+
+        user_prompt = json.dumps(input_json)
+        pass
+        return sys_prompt, user_prompt
