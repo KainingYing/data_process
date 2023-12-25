@@ -1,9 +1,6 @@
 from pathlib import Path
-import csv
 import json
 
-import mmcv
-from PIL import Image
 from iso3166 import countries
 
 from base_dataset import BaseDataset
@@ -48,8 +45,9 @@ class country_flag(BaseDataset):
     @staticmethod
     def generate_prompt(image_info, dataset_info):
         question = "Which country does the flag in the picture belong to?"
+        from prompt.base_system_prompt import single_choice_classification_sys_prompt
 
-        sys_prompt = "I need you to help me create options for a classification problem, where the answer is a category. Additionally, I will provide you with a category space for creating other options. Formally, I will provide you with a category space, a ground truth class, a question (you can use this question directly when you return), and you will assist me in completing a dictionary and returning it as JSON."
+        sys_prompt = single_choice_classification_sys_prompt
 
         input_json = {
             "question": question,
@@ -72,5 +70,4 @@ class country_flag(BaseDataset):
         }
 
         user_prompt = json.dumps(input_json)
-        pass
         return sys_prompt, user_prompt

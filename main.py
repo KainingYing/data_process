@@ -6,15 +6,37 @@ warnings.filterwarnings("ignore")
 
 import mmcv
 
+from low_level_vision.depth_estimation import *
+from low_level_vision.height_estimation import *
+
 from visual_recognition.color_recognition import *
+from visual_recognition.shape_recognition import *
+from visual_recognition.texture_material_recognition import *
 from visual_recognition.national_flag_recognition import *
 from visual_recognition.fashion_recognition import *
 from visual_recognition.abstract_visual_recognition import *
+from visual_recognition.season_recognition import *
+from visual_recognition.scene_recognition import *
+from visual_recognition.film_and_television_recognition import *
+from visual_recognition.painting_recognition import *
+from visual_recognition.logo_and_brand_recognition import *
+from visual_recognition.sculpture_recognition import *
+from visual_recognition.landmark_recognition import *
+
+from localization.small_object_detection import *
+from localization.rotated_object_detection import *
+
+from pixel_level_perception.image_matting import *
+from pixel_level_perception.polygon_localization import *
 
 from ocr.handwritten_text_recognition import *
 from ocr.handwritten_mathematical_expression_recognition import *
 
+from doc_understanding.visual_document_information_extraction import *
+from doc_understanding.table_structure_recognition import *
+
 from visual_prompt_understanding.visual_mark_understanding import *
+from visual_prompt_understanding.som_recognition import *
 
 from image2image_translate.jigsaw_puzzle_solving import *
 
@@ -31,6 +53,10 @@ from visual_illusion.geometrical_relativity import *
 from visual_coding.eqn2latex import *
 from visual_coding.screenshot2code import *
 from visual_coding.sketch2code import *
+
+from counting.counting_by_category import *
+from counting.counting_by_reasoning import *
+from counting.counting_by_visual_prompting import *
 
 
 class MergeDataset:
@@ -79,7 +105,7 @@ def main(args):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Example script to parse arguments.")
-    parser.add_argument('--task_name', type=str, default="sketch2code", help='The name of the target dataet')
+    parser.add_argument('--task_name', type=str, default="table_structure_recognition", help='The name of the target dataet')
     parser.add_argument('--dataset_config', type=str, default="/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/data_process/dataset_config.py", help='The path of dataset config.')
 
     args = parser.parse_args()

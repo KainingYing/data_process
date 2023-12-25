@@ -1,7 +1,10 @@
-import json
 import os
-from abc import abstractmethod
+
 from PIL import Image
+import mmcv
+from openai import OpenAI
+
+os.environ["OPENAI_BASE_URL"] = "https://api.openai-sb.com/v1"
 
 
 class BaseDataset:
@@ -40,9 +43,9 @@ class BaseDataset:
             self.sampling_num = len(self.images_info)
         return random.sample(self.images_info, self.sampling_num)
     
-    @property
-    def image_dict(self):
-        return {"source": self.dataset_name, "visual_input_component": self.visual_input_component}
+    def image_dict(self, image_path):
+        width, height = self.get_image_width_height(image_path)
+        return {"source": self.dataset_name, "visual_input_component": self.visual_input_component, "width": width, "height": height}
     
     def get_image_width_height(self, image_name):
         with Image.open(image_name) as img:
@@ -53,3 +56,26 @@ class BaseDataset:
     def save_image(self, image, image_path):
         img = Image.fromarray(image.astype('uint8'), 'L')
         img.save(image_path)
+
+    def save_rgb_image(self, image, image_path):
+        # cv2.imwrite(str(image_path), image)
+        mmcv.imwrite(image, image_path)
+    
+    @staticmethod
+    def openai_generate(sys, user):
+        openai_client = OpenAI()
+        while True:
+            try:
+                response = openai_client.chat.completions.create(
+                    model="gpt-3.5-turbo-1106",
+                    response_format={ "type": "json_object" },
+                    messages=[
+                        {"role": "system", "content": sys},
+                        {"role": "user", "content": user}
+                    ])
+                output = eval(response.choices[0].message.content)
+                break
+            except:
+                pass
+        
+        return output
