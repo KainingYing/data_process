@@ -7,6 +7,8 @@ import cv2
 from scipy import ndimage
 from tqdm import tqdm
 
+from prompt.utils import *
+
 def count_connected_regions(mask):
     # 找到连通区域
     labeled, num_features = ndimage.label(mask)
@@ -77,7 +79,7 @@ def merge_images_with_titles(image1, title1, image2, title2, save_path):
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-def plot_and_save_two_images(image_path1, image_path2, label1, label2, save_path):
+def plot_and_save_two_images(image_path1, image_path2, label1, label2, save_path, dpi):
     """
     Plots two images side by side with their respective labels and saves the plot to a specified path.
 
@@ -109,7 +111,7 @@ def plot_and_save_two_images(image_path1, image_path2, label1, label2, save_path
     plt.subplots_adjust(wspace=0.3)
 
     # 保存图形到指定路径
-    plt.savefig(save_path, bbox_inches='tight', dpi=300)
+    plt.savefig(save_path, bbox_inches='tight', dpi=dpi)
 
     # # 显示图形
     # plt.show()
@@ -163,10 +165,47 @@ class DES(BaseDataset):
     
     @staticmethod
     def generate_qa(image_info, dataset_info, save_image_path):
-
+        width, height = image_info["width"], image_info["height"]
+        num_choices = 4
+        question = f"The left image is RGB image and the right image is the corresponding depth map. Please detect the salient foreground object in this RGB image and represent them using a single bounding box. Provide the output for the detected area in the format [x, y, w, h]. This format represents the bounding box, where [x, y, w, h] are the coordinates of the top-left corner of the bounding box, as well as its width and height. Note that the width of the input RGB image is {width} and the height is {height}."
         image_path = image_info["original_image_path"]
         depth_map_path = image_info["original_depth_path"]
-        pass
+
+        BaseDataset.exist_or_mkdir(save_image_path)
+        merge_image_path = os.path.join(save_image_path, BaseDataset.new_image_name())
+
+        plot_and_save_two_images(image_path, depth_map_path, "RGB image", "Depth map", merge_image_path, dpi=200)
+
+        bbox = image_info["boxes"]['foreground'][0]
+        bbox = xyxy2xywh(bbox)
+
+        i = 0
+        while i <= 10:
+            try:
+                wrong_choices_list = generate_incorrect_bounding_box_from_single_bbox(bbox, width, height, num_choices-1)
+                    
+                qa_json = {
+                    "num_wrong_choices": num_choices - 1,
+                    "gt": bbox,
+                    "question": question,
+                    "wrong_choices_list": wrong_choices_list
+                }
+                qa_json = BaseDataset.post_process(qa_json, question=question)
+                qa_json["merge_image_path"] = merge_image_path
+                break
+            except:
+                i += 1
+
+        return qa_json
+
+        # qa_json = {
+        #     "num_wrong_choices": num_choices - 1,
+        #     "gt": bbox,
+        #     "question": question,
+        #     "wrong_choices_list": wrong_choices_list
+        # }
+
+        # pass
             
             
 class NJU2K(BaseDataset):
@@ -216,4 +255,39 @@ class NJU2K(BaseDataset):
             'width': w
             }
             self.images_info.append(info)
+    
+    @staticmethod
+    def generate_qa(image_info, dataset_info, save_image_path):
+        width, height = image_info["width"], image_info["height"]
+        num_choices = 4
+        question = f"The left image is RGB image and the right image is the corresponding depth map. Please detect the salient foreground object in this RGB image and represent them using a single bounding box. Provide the output for the detected area in the format [x, y, w, h]. This format represents the bounding box, where [x, y, w, h] are the coordinates of the top-left corner of the bounding box, as well as its width and height. Note that the width of the input RGB image is {width} and the height is {height}."
+        image_path = image_info["original_image_path"]
+        depth_map_path = image_info["original_depth_path"]
+
+        BaseDataset.exist_or_mkdir(save_image_path)
+        merge_image_path = os.path.join(save_image_path, BaseDataset.new_image_name())
+
+        plot_and_save_two_images(image_path, depth_map_path, "RGB image", "Depth map", merge_image_path, dpi=200)
+
+        bbox = image_info["boxes"]['foreground'][0]
+        bbox = xyxy2xywh(bbox)
+
+        i = 0
+        while i <= 10:
+            try:
+                wrong_choices_list = generate_incorrect_bounding_box_from_single_bbox(bbox, width, height, num_choices-1)
+                    
+                qa_json = {
+                    "num_wrong_choices": num_choices - 1,
+                    "gt": bbox,
+                    "question": question,
+                    "wrong_choices_list": wrong_choices_list
+                }
+                qa_json = BaseDataset.post_process(qa_json, question=question)
+                qa_json["merge_image_path"] = merge_image_path
+                break
+            except:
+                i += 1
+
+        return qa_json
             

@@ -385,6 +385,13 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/ocr/font_recognition"
     },
+    "scene_text_recognition": {
+        "dataset_list": [
+            "ICDAR2013",
+            "IIIT5K"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/ocr/scene_text_recognition"
+    },
     # ==============================================================================================================================
     # visual_prompt_understanding
     "visual_prompt_understanding": {
