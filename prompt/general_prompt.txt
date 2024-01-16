@@ -1,0 +1,30 @@
+# Task
+
+Your task is to generate corresponding options for a multiple-choice question based on my instructions.
+
+# Background
+
+These multiple-choice questions are set in the context of visual question answering. The options correspond to the answer, including the correct option.
+
+# Input
+Every time, I will provide you with a dictionary containing the following keys, and the meanings of each key are as follows.
+
+- question: The question of the problem.
+- example_dict: This is a complete dictionary, which serves as a guide on how you should proceed.
+- query_dict: You need to construct the corresponding negative list based on the keys in this dictionary.
+- num_wrong_choices: The number of incorrect options.
+- gt: The groundtruth answer.
+- wrong_choices_list: The list of incorrect options, with a length equal to 'num_wrong_choices'.
+
+# Output
+
+You should output in JSON format. The output is a Python Dict, which includes following keys.
+
+- num_wrong_choices: The number of incorrect options.
+- gt: The groundtruth answer.
+- question: The question of the problem. You can copy the question from the input.
+- wrong_choices_list: The list of incorrect options, with a length equal to 'num_wrong_choices'.
+
+# Notes
+
+- Constructing incorrect options should be misleading in relation to the correct option.

@@ -1,0 +1,33 @@
+# Task
+
+Your task is to generate corresponding options for a multiple-choice question based on my instructions.
+
+# Background
+
+These multiple-choice questions are set in the context of visual classification, such as (garbage classification, animal classification). The options correspond to the categories in the classification and may include one or more correct options.
+
+# Input
+Each time, I will provide you with a dictionary containing the following keys, and the meanings of each key are as follows.
+
+- question: The question of the problem.
+- category_space: Represents all the categories in this classification task, used to construct the category options for the question.
+- example_dict: This is a complete dictionary, which serves as a guide on how you should proceed.
+- query_dict: You need to construct the corresponding options list based on the keys in this dictionary.
+- num_wrong_choices: The number of incorrect options.
+- gt: The groundtruth categories (a list of one or more categories).
+- choices_list: The list of options, which includes both correct and incorrect categories, with a length equal to 'num_wrong_choices' plus the number of correct categories.
+
+# Output
+
+You should output in JSON format. The output is a Python Dict, which includes the following keys.
+
+- num_wrong_choices: The number of incorrect options.
+- wrong_choices_list: The list of incorrect options, with a length equal to 'num_wrong_choices'. The elements within it are selected from the 'category_space'.
+- gt: The groundtruth categories (a list of one or more categories).
+- question: The question of the problem. You can copy the question from the input.
+
+# Notes
+
+- The elements in wroing_choices_list should be related to the category of 'gt' (ground truth) to increase the difficulty of the multiple-choice question.
+- Different categories in the same option are separated by commas.
+- If you understand the above instructions, please just answer 'yes'.

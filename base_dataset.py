@@ -23,12 +23,14 @@ class BaseDataset:
         self.dataset_info["dataset_name"] = self.dataset_name
         self.dataset_info["visual_input_component"] = self.visual_input_component
     
-    def new_image_name(self, e="jpg"):
+    @staticmethod
+    def new_image_name(e="jpg"):
         import uuid
         new_image_name = str(uuid.uuid4()) + f".{e}"
         return new_image_name
-        
-    def exist_or_mkdir(self, folder_path):
+    
+    @staticmethod
+    def exist_or_mkdir(folder_path):
         if not os.path.exists(folder_path):
             # If the folder does not exist, create it
             os.makedirs(folder_path)
@@ -41,10 +43,14 @@ class BaseDataset:
         import random
         if self.sampling_num > len(self.images_info):
             self.sampling_num = len(self.images_info)
-        return random.sample(self.images_info, self.sampling_num)
+        
+        output_list = random.sample(self.images_info, self.sampling_num)
+        return output_list
     
-    def image_dict(self, image_path):
-        width, height = self.get_image_width_height(image_path)
+    def image_dict(self, image_path, width=None, height=None):
+        # if width is None or height is None:
+        #     width, height = self.get_image_width_height(image_path)
+        # assert os.path.exists(image_path)
         return {"source": self.dataset_name, "visual_input_component": self.visual_input_component, "width": width, "height": height}
     
     def get_image_width_height(self, image_name):
@@ -79,3 +85,34 @@ class BaseDataset:
                 pass
         
         return output
+    
+    @staticmethod
+    def post_process(qa_json, question=None):
+        import random
+        import copy
+        # verify
+
+        assert qa_json["num_wrong_choices"]
+        assert qa_json["gt"] or qa_json["gt"] == 0
+        assert qa_json["question"]
+        assert qa_json["wrong_choices_list"]
+
+        assert len(qa_json["wrong_choices_list"]) == qa_json["num_wrong_choices"]
+        assert qa_json["gt"] not in qa_json["wrong_choices_list"]
+
+        # prepare multi choices
+        gt_index = random.randrange(0, qa_json["num_wrong_choices"] + 1)
+        
+        choice_list = copy.deepcopy(qa_json["wrong_choices_list"])
+        random.shuffle(choice_list)
+        choice_list.insert(gt_index, qa_json["gt"])
+
+        qa_json["choice_list"] = choice_list
+        qa_json["gt_index"] = gt_index
+
+        if question is not None:
+            qa_json['question'] = question
+        return qa_json
+
+    # def process_category_name(self, category):
+        

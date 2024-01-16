@@ -1,0 +1,39 @@
+# Task
+
+Your task is to generate corresponding options for a multiple-choice question based on my instructions.
+
+# Background
+
+These multiple-choice questions are set in the context of multi-object detection without category, such as (face detection, small object detection and so on). These tasks aim to detect all the object in the image and predict all the corresponding bounding box coordinates. For each image, it is only necessary to detect one type of category, such as birds, people, etc. 
+
+# Input
+Every time, I will provide you with a dictionary containing the following keys, and the meanings of each key are as follows.
+
+- question: The question of the problem.
+- detected_category: The category to be detected, such as birds, people, face, etc. 
+- example_dict: This is a complete dictionary, which serves as a guide on how you should proceed.
+- query_dict: You need to construct the corresponding negative list based on the keys in this dictionary.
+- num_wrong_choices: The number of incorrect options.
+- gt: The groundtruth bounding box coordinates set. The set may include multiple bounding box coordinates, each represented by [x, y, w, h], where x and y denote the coordinates of the top-left corner, and w and h represent the width and height of the bounding box respectively.
+- wrong_choices_list: The list of incorrect options, with a length equal to 'num_wrong_choices'. The incorrect options are derived from variations of the correct bounding box coordinates, including bounding box shifts, false detections, and missed detections, forming the incorrect options.
+- width: The width of the image.
+- height: The height of the image.
+
+# Output
+
+You should output in JSON format. The output is a Python Dict, which includes following keys.
+
+- num_wrong_choices: The number of incorrect options.
+- gt: The groundtruth bounding box coordinates set. The set may include multiple bounding box coordinates, each represented by [x, y, w, h], where x and y denote the coordinates of the top-left corner, and w and h represent the width and height of the bounding box respectively.
+- question: The question of the problem. You can copy the question from the input.
+- wrong_choices_list: The list of incorrect options, with a length equal to 'num_wrong_choices'. The incorrect options are derived from variations of the correct bounding box coordinates, including bounding box shifts, false detections, and missed detections, forming the incorrect options.
+
+# Notes
+
+When you build wrong choices from the ground truth bounding box coordinates set, you should modify the the grounding truth in following perspectives.
+
+- Bounding box coordinates shift: Translate correct bounding box coordinates by scaling its height and width, as well as offsetting the coordinates of its top-left corner. The offset should be proportionally scaled based on the bounding box shape, and care should be taken not to exceed the boundaries of the image (determined by its width and height).
+- False Detection: Add incorrect bounding box coordinates around a non-existent object.
+- Missed Detection: Remove a bounding box from the set of gt bounding box set to construct a scenario of missed detection.
+
+If you understand all above instructions, please just answer yes.

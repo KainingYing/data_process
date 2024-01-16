@@ -18,16 +18,116 @@ dataset = {
     },
     # ==============================================================================================================================
     # visual_recognition
+    "age_gender_race_recognition": {
+        "dataset_list": [
+            "FairFace",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/age_gender_race_recognition"
+    },
+    "animated_character_recognition": {
+        "dataset_list": [
+            "Anime_Characters_Personality_And_Facial_Images",
+            "moeimouto_faces"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/animated_character_recognition"
+    },
+    "celebrity_recognition": {
+        "dataset_list": [
+            "lfw",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/celebrity_recognition"
+    },
+    "weapon_recognition": {
+        "dataset_list": [
+            "OWAD",
+            "weapon_detection_dataset"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/weapon_recognition"
+    },
+    "building_recognition": {
+        "dataset_list": [
+            "ArchitecturalStyles",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/building_recognition"
+    },
+    "deepfake_detection": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/deepfake_detection/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/deepfake_detection",
+        "sampling_num": {
+            "FFplusplus": 100,
+            "CelebDFv2": 50,
+            "dalle_art_deepfake": 50,
+        }
+    },
+    "rock_recognition": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/rock_visual_recognition/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/rock_recognition",
+        "sampling_num": {
+            "rock_image_recognition1": 100,
+            "rock_image_recognition2": 100
+        }
+    },
+    "disaster_recognition": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/disaster_visual_recognition/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/disaster_recognition",
+        "sampling_num": {
+            "disaster_image_recognition": 100,
+            "MEDIC": 100
+        }
+    },
+    "weather_recognition": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/weather_visual_recognition/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/weather_recognition",
+        "sampling_num": {
+            "weather_image_recognition": 100,
+            "MWD": 100
+        }
+    },
+    "gesture_recognition": {
+        "dataset_list": [
+            "CNNGestureRecognizer",
+            "gesture_digits"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/gesture_recognition"
+    },
+    "profession_recognition": {
+        "dataset_list": [
+            "IdenProf",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/profession_recognition"
+    },
+    "electronic_object_recognition": {
+        "dataset_list": [
+            "e_waste",
+            "electronics_object_image_dataset_computer_parts"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/electronic_object_recognition"
+    },
+    "plant_recognition": {
+        "dataset_list": [
+            "flower_photos",
+            "Plant_Data"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/plant_recognition"
+    },
+    "vehicle_recognition": {
+        "dataset_list": [
+            "TAU_Vehicle_Type_Recognition",
+            "vehicle_type_recognition"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/vehicle_recognition"
+    },
     "shape_recognition": {
         "dataset_list": [
-            # "twod_geometric_shapes_dataset",
+            "twod_geometric_shapes_dataset",
             "gpt_auto_generated_shape"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/shape_recognition"
     },
     "color_recognition": {
         "dataset_list": [
-            "python_auto_generated_color"
+            "python_auto_generated_color_name",
+            "python_auto_generated_color_rgb"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/color_recognition"
     },
@@ -59,16 +159,58 @@ dataset = {
         "dataset_list": [
             "fake_real_logo_detection_dataset",
             "flickr_sport_logos_10",
-            "car_logos_dataset",
-            "logo627"
+            # "car_logos_dataset",
+            # "logo627"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/logo_and_brand_recognition"
     },
-    "season_recognition": {
+    "image_season_recognition": {
         "dataset_list": [
             "image_season_recognition"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/image_season_recognition"
+    },
+    "astronomical_recognition": {
+        "dataset_list": [
+            "astronomical_internet"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/astronomical_recognition"
+    },
+    "sports_recognition": {
+        "dataset_list": [
+            "Sports_Image_Classification_100",
+            "Cricket_Football_Baseball"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/sports_recognition"
+    },
+    "food_recognition": {
+        "dataset_list": [
+            "Fruits_and_Vegetables",
+            "food_101"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/food_recognition"
+    },
+    "waste_recognition": {
+        "dataset_list": [
+            "Garbage_Classification_12",
+            "Waste_Classification_data"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/waste_recognition"
+    },
+    "animals_recognition": {
+        "dataset_list": [
+            "animals90",
+            "animals150",
+            "animals10"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/animals_recognition"
+    },
+    "muscial_instrument_recognition": {
+        "dataset_list": [
+            "musical_instruments_image_classification",
+            "music_instruments_classification"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/muscial_instrument_recognition"
     },
     "film_and_television_recognition": {
         "dataset_list": [
@@ -77,9 +219,22 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/film_and_television_recognition"
     },
+    "chemical_apparatusn_recognition": {
+        "dataset_list": [
+            "chemical_apparatus_image_dataset",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/chemical_apparatusn_recognition"
+    },
+    "religious_recognition": {
+        "dataset_list": [
+            "religious_symbols_image_classification",
+            "dataset_of_traditional_chinese_god_statue"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/religious_recognition"
+    },
     "scene_recognition": {
         "dataset_list": [
-            # "indoor_scene_recognition",
+            "indoor_scene_recognition",
             "places365"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/scene_recognition"
@@ -87,7 +242,6 @@ dataset = {
     "landmark_recognition": {
         "dataset_list": [
             "landmark_internet",
-            # "places365"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/landmark_recognition"
     },
@@ -106,24 +260,74 @@ dataset = {
     },
     "abstract_visual_recognition": {
         "dataset_list": [
-            # "quickdraw",
+            "quickdraw",
             "imagenet_sketch"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/abstract_visual_recognition"
     },
     # ==============================================================================================================================
     # localization
+    "face_detection": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/visual_recognition/face_detection/metadata_info.json",
+        "sampling_num": {
+            "FDDB": 100,
+            "WIDERFACE": 100
+        },
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/face_detection"
+    },
+    "salient_object_detection_rgb": {
+        "dataset_list": [
+            "MSRA10K",
+            "DUTS",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/salient_object_detection_rgb"
+    },
+    "salient_object_detection_rgbd": {
+        "dataset_list": [
+            "DES",
+            "NJU2K",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/salient_object_detection_rgbd"
+    },
+    "transparent_object_detection": {
+        "dataset_list": [
+            "Trans10K",
+            "Transparent_Object_Images",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/transparent_object_detection"
+    },
+    "camouflage_object_detection": {
+        "dataset_list": [
+            "COD10K",
+            "NC4K",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/camouflage_object_detection"
+    },
+    "remote_sensing_object_detection": {
+        "dataset_list": [
+            "DIOR",
+            "VisDrone",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/remote_sensing_object_detection"
+    },
+    "object_detection": {
+        "dataset_list": [
+            "coco_det",
+            "VOC2012_det",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/object_detection"
+    },
     "small_object_detection": {
         "dataset_list": [
             "sod4bird",
-            # "drone2021",
+            "drone2021",
             "tinyperson"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/localization/small_object_detection"
     },
     "rotated_object_detection": {
         "dataset_list": [
-            # "dota",
+            "dota",
             "ssdd_inshore",
             "ssdd_offshore"
         ],
@@ -131,13 +335,19 @@ dataset = {
     },
     # ==============================================================================================================================
     # pixel-level perception
+    "pixel_localization": {
+        "dataset_list": [
+            "coco_pixel_localization",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/pixel_level_perception/pixel_localization"
+    },
     "polygon_localization": {
         "dataset_list": [
-            # "coco_polygon",
+            "coco_polygon",
             # "youtubevis2019_polygon",
-            "ovis_polygon"
+            # "ovis_polygon"
         ],
-        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/pixel_level_perception/image_matting"
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/pixel_level_perception/polygon_localization"
     },
     "image_matting": {
         "dataset_list": [
@@ -145,6 +355,13 @@ dataset = {
             "aim500"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/pixel_level_perception/image_matting"
+    },
+    "pixel_recognition": {
+        "dataset_list": [
+            "coco_pixel_recognition",
+            "ade20k_pixel_recognition"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/pixel_level_perception/pixel_recognition"
     },
     # ==============================================================================================================================
     # ocr
@@ -162,20 +379,26 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/ocr/handwritten_mathematical_expression_recognition"
     },
+    "font_recognition": {
+        "dataset_list": [
+            "adobe_vfr",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/ocr/font_recognition"
+    },
     # ==============================================================================================================================
     # visual_prompt_understanding
     "visual_prompt_understanding": {
         "dataset_list": [
             "vipbench"
         ],
-        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_prompt_understanding"
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_prompt_understanding/visual_prompt_understanding"
     },
     "som_recognition": {
         "dataset_list": [
             "sombench_flickr30k_grounding",
             "sombench_refcocog_refseg"
         ],
-        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/som_recognition"
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_prompt_understanding/som_recognition"
     },
     # ==============================================================================================================================
     # image2image_translation
@@ -186,8 +409,66 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/image-to-image_translation/jigsaw_puzzle_solving"
     },
+    # emotion
+    "facial_expression_recognition": {
+        "dataset_list": [
+            "ferplus",
+            "facial_emotion_recognition_dataset"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/emotion/facial_expression_recognition"
+    },
+    "micro_expression_recognition": {
+        "dataset_list": [
+            "CASME",
+            "SAMM"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/emotion/micro_expression_recognition"
+    },
+    "body_emotion_recognition": {
+        "dataset_list": [
+            # "emotic",
+            "CAERS",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/emotion/body_emotion_recognition"
+    },
+    "artwork_emotion_recognition": {
+        "dataset_list": [
+            "artemis",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/emotion/artwork_emotion_recognition"
+    },
+    "scene_emotion_recognition": {
+        "dataset_list": [
+            "Artphoto",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/emotion/scene_emotion_recognition"
+    },
+    # ==============================================================================================================================
+    # visual_grounding
+    "referring_detection": {
+        "dataset_list": [
+            "RefCOCO_refer",
+            "RefCOCOplus_refer",
+            "RefCOCOg_refer"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_grounding/referring_detection"
+    },
+    "reason_seg": {
+        "dataset_list": [
+            "reason_seg",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_grounding/reason_seg"
+    },
     # ==============================================================================================================================
     # relation reasoning
+    "scene_graph_recognition": {
+        "dataset_list": [
+            # "visual_genome_sg",
+            # "vrd_sg",
+            "vsr"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/relation_reasoning/scene_graph_recognition",
+    },
     "social_relation_recognition": {
         "dataset_list": [
             "social_relation_dataset",
@@ -197,16 +478,50 @@ dataset = {
     "human_object_interaction_recognition": {
         "dataset_list": [
             "hicodet",
-            # "vcoco"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/relation_reasoning/human_object_interaction_recognition",
     },
     "human_interaction_understanding": {
         "dataset_list": [
-            # "hicodet_hiu",
+            "hicodet_hiu",
             "bit"
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/relation_reasoning/human_interaction_understanding",
+    },
+    # ==============================================================================================================================
+    # visual_captioning
+    "writing_poetry_from_image": {
+        "dataset_list": [
+            "poetry"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_captioning/writing_poetry_from_image",
+    },
+    "image_captioning": {
+        "dataset_list": [
+            "coco_captions"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_captioning/image_captioning",
+    },
+    "instance_captioning": {
+        "dataset_list": [
+            "visual_genome_caption",
+            "refcocog_caption"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_captioning/instance_captioning",
+    },
+    "multiple_instance_captioning": {
+        "dataset_list": [
+            # "arch",
+            "flickr30k_multi_regions"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_captioning/multiple_instance_captioning",
+    },
+    "image_captioning_paragraph": {
+        "dataset_list": [
+            # "ade20k_caption",
+            "paragraph_caption"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_captioning/image_captioning_paragraph",
     },
     # ==============================================================================================================================
     # visual_illusion
@@ -246,7 +561,7 @@ dataset = {
         "dataset_list": [
             "im2latex90k"
         ],
-        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/eqn2latex",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_code/eqn2latex",
     },
     "screenshot2code": {
         "dataset_list": [
@@ -254,16 +569,23 @@ dataset = {
             "pix2code_ios",
             "pix2code_web"
         ],
-        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/screenshot2code",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_code/screenshot2code",
     },
     "sketch2code": {
         "dataset_list": [
             "sketch2code_kaggle"
         ],
-        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_illusion/sketch2code",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/visual_code/sketch2code",
     },
     # ==============================================================================================================================
     # counting
+    "crowd_counting": {
+        "dataset_list": [
+            "ShanghaiTech",
+            "CARPK"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/counting/crowd_counting",
+    },
     "counting_by_category": {
         "dataset_list": [
             "fsc147_category",
@@ -285,11 +607,77 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/counting/counting_by_visual_prompting",
     },
+    # keypoint_detection
+    "human_keypoint_detection": {
+        "dataset_list": [
+            "MSCOCO_keypoint",
+            "MPII_keypoint"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/keypoint_detection/human_keypoint_detection",
+    },
+    "furniture_keypoint_detection": {
+        "dataset_list": [
+            "furniture_keypoint",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/keypoint_detection/furniture_keypoint_detection",
+    },
+    "animal_keypoint_detection": {
+        "dataset_list": [
+            "ap10k_keypoint",
+            "Animal_kingdom_keypoint"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/keypoint_detection/animal_keypoint_detection",
+    },
+    "clothes_keypoint_detection": {
+        "dataset_list": [
+            "Deepfashion_keypoint",
+            "Deepfashion2_keypoint"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/keypoint_detection/clothes_keypoint_detection",
+    },
+    "vehicle_keypoint_detection": {
+        "dataset_list": [
+            "vehicle_keypoint",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/keypoint_detection/vehicle_keypoint_detection",
+    },
+    # action recognition
+    "image_based_action_recognition": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/image_based_action_recognition/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/image_based_action_recognition",
+        "sampling_num": {
+            "HAR": 100,
+            "POLAR": 100
+        }
+    },
+    "sign_language_recognition": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/sign_language_recognition/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/sign_language_recognition",
+        "sampling_num": {
+            "MSASL": 100,
+            "WASAL": 100
+        }
+    },
+    "general_action_recognition": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/general_action_recognition/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/general_action_recognition",
+        "sampling_num": {
+            "kinetics400": 200
+        }
+    },
+    "action_quality_assessment": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/action_quality_assessment/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/action_quality_assessment",
+        "sampling_num": {
+            "UNLV": 100,
+            "AQA7": 100
+        }
+    },
     # ==============================================================================================================================
     # doc_understanding
     "visual_document_information_extraction": {
         "dataset_list": [
-            "funsd",
+            "sroie",
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/doc_understanding/visual_document_information_extraction",
     },
@@ -298,5 +686,104 @@ dataset = {
             "scitsr",
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/doc_understanding/table_structure_recognition",
+    },
+    # ==============================================================================================================================
+    # intelligence_quotient_test
+    "ravens_progressive_matrices": {
+        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/intelligence_quotient_test/ravens_progressive_matrices/metadata_info.json",
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/intelligence_quotient_test/ravens_progressive_matrices",
+        "sampling_num": {
+            "RAVEN_10000": 200,
+        }
+    },
+    # ==============================================================================================================================
+    # cross_image_tracking
+    "single_object_tracking": {
+        "dataset_list": [
+            "youtubevis2019_sot",
+            "ovis_sot",
+            # "vot2018"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/cross_image_matching/single_object_tracking",
+    },
+    "point_tracking": {
+        "dataset_list": [
+            "tapvid_davis",
+            "tapvid_rgb_stacking",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/cross_image_matching/point_tracking",
+    },
+    "one_shot_detection": {
+        "dataset_list": [
+            "fss_1000",
+            "paco_part"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/cross_image_matching/one_shot_detection",
+    },
+    # ==============================================================================================================================
+    # image_evaluation_judgement
+    "lvlm_response_judgement": {
+        "dataset_list": [
+            "LVLM_eHub_conv_data",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/image_evaluation_judgement/lvlm_response_judgement",
+    },
+    # ==============================================================================================================================
+    # medical_understanding
+    "medical_modality_recognition": {
+        "dataset_list": [
+            "medical_modality_recognition",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/medical_understanding/medical_modality_recognition",
+    },
+    "anatomy_identification": {
+        "dataset_list": [
+            "anatomy_identification",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/medical_understanding/anatomy_identification",
+    },
+    "disease_diagnose": {
+        "dataset_list": [
+            "disease_diagnose",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/medical_understanding/disease_diagnose",
+    },
+    "lesion_grading": {
+        "dataset_list": [
+            "lesion_grading",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/medical_understanding/lesion_grading",
+    },
+    "other_biological_attributes": {
+        "dataset_list": [
+            "other_biological_attributes",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/medical_understanding/other_biological_attributes",
+    },
+        # ==============================================================================================================================
+    # gui_navigation
+    "gui_general": {
+        "dataset_list": [
+            "gui_general",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/gui_navigation/gui_general",
+    },
+    "google_apps": {
+        "dataset_list": [
+            "google_apps",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/gui_navigation/google_apps",
+    },
+    "gui_install": {
+        "dataset_list": [
+            "google_apps",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/gui_navigation/gui_install",
+    },
+    "web_shopping": {
+        "dataset_list": [
+            "google_apps",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/gui_navigation/web_shopping",
     },
 }

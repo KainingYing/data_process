@@ -1,0 +1,10 @@
+{
+    "exclude": [
+      "data",
+      "taskonomy_evaluation_data",
+      "LMUData",
+      "_torchshow",
+      ".vs_code",
+    ],
+
+  }

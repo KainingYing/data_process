@@ -1,62 +1,25 @@
 import os
 import json
+import random
 import argparse
 import warnings
 warnings.filterwarnings("ignore")
+from collections import defaultdict
 
 import mmcv
+from prompt.utils import *
 
-from low_level_vision.depth_estimation import *
-from low_level_vision.height_estimation import *
+from task_zoo import *
 
-from visual_recognition.color_recognition import *
-from visual_recognition.shape_recognition import *
-from visual_recognition.texture_material_recognition import *
-from visual_recognition.national_flag_recognition import *
-from visual_recognition.fashion_recognition import *
-from visual_recognition.abstract_visual_recognition import *
-from visual_recognition.season_recognition import *
-from visual_recognition.scene_recognition import *
-from visual_recognition.film_and_television_recognition import *
-from visual_recognition.painting_recognition import *
-from visual_recognition.logo_and_brand_recognition import *
-from visual_recognition.sculpture_recognition import *
-from visual_recognition.landmark_recognition import *
 
-from localization.small_object_detection import *
-from localization.rotated_object_detection import *
-
-from pixel_level_perception.image_matting import *
-from pixel_level_perception.polygon_localization import *
-
-from ocr.handwritten_text_recognition import *
-from ocr.handwritten_mathematical_expression_recognition import *
-
-from doc_understanding.visual_document_information_extraction import *
-from doc_understanding.table_structure_recognition import *
-
-from visual_prompt_understanding.visual_mark_understanding import *
-from visual_prompt_understanding.som_recognition import *
-
-from image2image_translate.jigsaw_puzzle_solving import *
-
-from relation_reasoning.social_relation_recognition import *
-from relation_reasoning.human_object_interaction_recognition import *
-from relation_reasoning.human_interaction_understanding import *
-
-from visual_illusion.color_assimilation import *
-from visual_illusion.color_constancy import *
-from visual_illusion.color_contrast import *
-from visual_illusion.geometrical_perspective import *
-from visual_illusion.geometrical_relativity import *
-
-from visual_coding.eqn2latex import *
-from visual_coding.screenshot2code import *
-from visual_coding.sketch2code import *
-
-from counting.counting_by_category import *
-from counting.counting_by_reasoning import *
-from counting.counting_by_visual_prompting import *
+def check_function(func):
+    try:
+        eval(func)
+        function_defined = True
+    except (AttributeError, NameError):
+        function_defined = False
+    
+    return function_defined
 
 
 class MergeDataset:
@@ -65,21 +28,91 @@ class MergeDataset:
 
         self.task_name = task_name
         self.dataset_list = []
-        for dataset_name in dataset_config["dataset_list"]:
-            _dataset = eval(dataset_name)()
-            self.dataset_list.append(_dataset)
+        self.json_mode = False
+        if dataset_config.get("dataset_list", None) is None and dataset_config.get("metadata_info", None) is not None:
+            self.json_mode = True
+            self.samping_num = dataset_config["sampling_num"]
+            self.parse_metadata_info(dataset_config["metadata_info"])
+        else:
+            for dataset_name in dataset_config["dataset_list"]:
+                _dataset = eval(dataset_name)()
+                self.dataset_list.append(_dataset)
+    
+    def parse_metadata_info(self, metadata_info_path):
+        raw_metadata_info = mmcv.load(metadata_info_path)
+
+        dataset_image_info_list = defaultdict(list)
+        for image_info in raw_metadata_info["images"]:
+            if check_function(f"{image_info['source']}.process_raw_metadata_info"):
+                if eval(image_info["source"]).process_raw_metadata_info(image_info):
+                    dataset_image_info_list[image_info["source"]].append(eval(image_info["source"]).process_raw_metadata_info(image_info))
+                else:
+                    continue
+            else:
+                dataset_image_info_list[image_info["source"]].append(image_info)
+            
+        images_info = []
+        for key, value in dataset_image_info_list.items():
+            sampling_num = self.samping_num[key]
+            if sampling_num > len(value):
+                sampling_num = len(value)
+            
+            output_list = random.sample(value, sampling_num)
+            print(f"{key.ljust(10)} {sampling_num}")
+            images_info.extend(output_list)
+        
+        for dataset_info in raw_metadata_info["dataset_list"]:
+            dataset_info["sampling_num"] = self.samping_num[dataset_info["dataset_name"]]
+        self.task_data_info = raw_metadata_info
+        self.task_data_info["images"] = images_info
+
+        for image_info in self.task_data_info["images"]:
+            original_image_path = image_info["original_image_path"]
+            if isinstance(original_image_path, list):
+                original_image_path = original_image_path[0]
+            elif isinstance(original_image_path, str):
+                pass
+            else:
+                raise NotImplementedError
+            with Image.open(original_image_path) as img:
+                width, height = img.size
+            image_info["width"] = width
+            image_info["height"] = height
+        
+        print((f"{'overall'.ljust(10)} {len(self.task_data_info['images'])}"))
     
     def merge(self):
-        self.task_data_info = dict()
-        self.task_data_info["task_name"] = self.task_name
-        self.task_data_info["dataset_list"] = []
-        self.task_data_info["images"] = []
+        if not self.json_mode:
+            self.task_data_info = dict()
+            self.task_data_info["task_name"] = self.task_name
+            self.task_data_info["dataset_list"] = []
+            self.task_data_info["images"] = []
 
-        for dataset in self.dataset_list:
-            dataset_info = dataset.dataset_info
+            for dataset in self.dataset_list:
+                dataset_info = dataset.dataset_info
+                
+                self.task_data_info["dataset_list"].append(dataset_info)
+                self.task_data_info["images"].extend(dataset.sample())
+
+                print(f"{dataset_info['dataset_name'].ljust(10)} {len(dataset.sample())}")
             
-            self.task_data_info["dataset_list"].append(dataset_info)
-            self.task_data_info["images"].extend(dataset.sample())
+            print((f"{'overall'.ljust(10)} {len(self.task_data_info['images'])}"))
+
+            for image_info in self.task_data_info["images"]:
+
+                original_image_path = image_info["original_image_path"]
+                if isinstance(original_image_path, list):
+                    original_image_path = original_image_path[0]
+                elif isinstance(original_image_path, str):
+                    pass
+                else:
+                    raise NotImplementedError
+                with Image.open(original_image_path) as img:
+                    width, height = img.size
+                image_info["width"] = width
+                image_info["height"] = height
+        else:
+            pass
 
     def save(self):
         self.exist_or_mkdir(self.output_path)
@@ -105,7 +138,7 @@ def main(args):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Example script to parse arguments.")
-    parser.add_argument('--task_name', type=str, default="table_structure_recognition", help='The name of the target dataet')
+    parser.add_argument('--task_name', type=str, default="human_keypoint_detection", help='The name of the target dataet')
     parser.add_argument('--dataset_config', type=str, default="/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/data_process/dataset_config.py", help='The path of dataset config.')
 
     args = parser.parse_args()

@@ -15,16 +15,15 @@ from task_zoo import *
 
 
 def generate_qa_single(image_info, output_path, dataset_info, idx):
-    if (Path(output_path) / "qa_info" / f"qa_{idx}.json").exists():
+    if not (Path(output_path) / "qa_info" / f"qa_{idx}.json").exists():
         return
-    qa_json = eval(image_info["source"]).generate_qa(image_info, dataset_info, os.path.join(output_path, "images"))
+    qa_json = eval(image_info["source"]).modify_qa(mmcv.load(Path(output_path) / "qa_info" / f"qa_{idx}.json"))
     if qa_json is None:
         pass
     else:
         if "question" in  image_info.keys():
             del image_info["question"]
         
-        # 仅更新original_dict中不存在的键
         for key, value in image_info.items():
             if key not in qa_json:
                 qa_json[key] = value
@@ -113,7 +112,7 @@ def main(args):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Example script to parse arguments.")
-    parser.add_argument('--task_name', type=str, default="salient_object_detection_rgbd", help='The name of the target dataet')
+    parser.add_argument('--task_name', type=str, default="image_captioning", help='The name of the target dataet')
     parser.add_argument('--openai_key', type=str, default="sb-fb43570969a6107c4dc146c41841f9c342f9c94befc8fd29", help='openai key')
     parser.add_argument('--dataset_config', type=str, default="/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/data_process/dataset_config.py", help='The path of dataset config.')
     parser.add_argument('--nproc', type=int, default=1)
