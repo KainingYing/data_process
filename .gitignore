@@ -79,3 +79,7 @@ spec.txt
 
 # Visual Studio Code
 .vscode/
+
+data/
+taskonomy_evaluation_data/
+LMUData/

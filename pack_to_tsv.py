@@ -124,10 +124,13 @@ def main(args):
                 G = qa_info["choice_list"][6] if len(qa_info["choice_list"]) > 6 else None
 
                 answer = string.ascii_uppercase[qa_info["gt_index"]]
-                img = Image.open(qa_info['original_image_path'])
-                image = encode_image_to_base64(img)
-                
-                image_path = qa_info['original_image_path']
+                # img = Image.open(qa_info['original_image_path'])
+                # image = encode_image_to_base64(img)
+                image = None
+                image_path = qa_info.get("merge_image_path", qa_info['original_image_path'])
+                #     pass
+                # else:
+                #     image_path = qa_info['original_image_path']
             except:
                 continue
 

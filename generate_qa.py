@@ -113,7 +113,7 @@ def main(args):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Example script to parse arguments.")
-    parser.add_argument('--task_name', type=str, default="salient_object_detection_rgbd", help='The name of the target dataet')
+    parser.add_argument('--task_name', type=str, default="person_reid", help='The name of the target dataet')
     parser.add_argument('--openai_key', type=str, default="sb-fb43570969a6107c4dc146c41841f9c342f9c94befc8fd29", help='openai key')
     parser.add_argument('--dataset_config', type=str, default="/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/data_process/dataset_config.py", help='The path of dataset config.')
     parser.add_argument('--nproc', type=int, default=1)

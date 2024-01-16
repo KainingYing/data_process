@@ -138,7 +138,7 @@ def main(args):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Example script to parse arguments.")
-    parser.add_argument('--task_name', type=str, default="human_keypoint_detection", help='The name of the target dataet')
+    parser.add_argument('--task_name', type=str, default="person_reid", help='The name of the target dataet')
     parser.add_argument('--dataset_config', type=str, default="/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/data_process/dataset_config.py", help='The path of dataset config.')
 
     args = parser.parse_args()

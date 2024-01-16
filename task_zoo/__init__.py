@@ -57,10 +57,12 @@ from .emotion.micro_expression_recognition import *
 from .emotion.artwork_emotion_recognition import *
 from .emotion.body_emotion_recognition import *
 from .emotion.scene_emotion_recognition import *
+from .emotion.facail_expression_change_recognition import *
 
 from .ocr.handwritten_text_recognition import *
 from .ocr.handwritten_mathematical_expression_recognition import *
 from .ocr.font_recogniton import *
+from .ocr.scene_text_recognition import *
 
 from .doc_understanding.visual_document_information_extraction import *
 from .doc_understanding.table_structure_recognition import *
@@ -97,6 +99,7 @@ from .cross_image_matching.one_shot_detection import *
 from .intelligence_quotient_test.ravens_progressive_matrices import *
 
 from .action_recognition.general_action_recognition import *
+from .action_recognition.image_based_action_recognition import *
 
 from .image_evaluation_judgement.lvlm_response_judgement import *
 
@@ -125,3 +128,5 @@ from .gui_navigation.gui_general import *
 from .gui_navigation.google_apps import *
 from .gui_navigation.gui_install import *
 from .gui_navigation.web_shopping import *
+
+from .image_retrieval.person_reid import *

@@ -450,6 +450,13 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/emotion/scene_emotion_recognition"
     },
+    "facail_expression_change_recognition": {
+        "dataset_list": [
+            "emotion_change",
+            "ferg_db"
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/emotion/facail_expression_change_recognition"
+    },
     # ==============================================================================================================================
     # visual_grounding
     "referring_detection": {
@@ -650,12 +657,11 @@ dataset = {
     },
     # action recognition
     "image_based_action_recognition": {
-        "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/image_based_action_recognition/metadata_info.json",
+        "dataset_list": [
+            "HAR",
+            "POLAR"
+        ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/image_based_action_recognition",
-        "sampling_num": {
-            "HAR": 100,
-            "POLAR": 100
-        }
     },
     "sign_language_recognition": {
         "metadata_info": "/mnt/petrelfs/share_data/wangjin/lvlm_evaluation/taskonomy_evaluation_data/action_recognition/sign_language_recognition/metadata_info.json",
@@ -767,7 +773,7 @@ dataset = {
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/medical_understanding/other_biological_attributes",
     },
-        # ==============================================================================================================================
+    # ==============================================================================================================================
     # gui_navigation
     "gui_general": {
         "dataset_list": [
@@ -792,5 +798,13 @@ dataset = {
             "google_apps",
         ],
         "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/gui_navigation/web_shopping",
+    },
+    # ==============================================================================================================================
+    # image_retrieval
+    "person_reid": {
+        "dataset_list": [
+            "market_1501",
+        ],
+        "output_path": "/mnt/petrelfs/share_data/yingkaining/lvlm_evaluation/taskonomy_evaluation_data/image_retrieval/person_reid",
     },
 }

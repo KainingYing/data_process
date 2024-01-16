@@ -197,15 +197,6 @@ class DES(BaseDataset):
                 i += 1
 
         return qa_json
-
-        # qa_json = {
-        #     "num_wrong_choices": num_choices - 1,
-        #     "gt": bbox,
-        #     "question": question,
-        #     "wrong_choices_list": wrong_choices_list
-        # }
-
-        # pass
             
             
 class NJU2K(BaseDataset):
